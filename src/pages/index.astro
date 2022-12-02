@@ -1,5 +1,13 @@
 ---
 import MainLayout from "../layouts/main-layout.astro";
+import MainDivider from "../components/main-divider.astro";
+import InfoSection from "../components/info-section.astro";
 ---
 
-<MainLayout>Rog Realms</MainLayout>
+<MainLayout>
+  <div class="grid grid-rows-[auto_1fr_auto] h-screen">
+    <MainDivider />
+    <InfoSection />
+    <MainDivider />
+  </div>
+</MainLayout>
