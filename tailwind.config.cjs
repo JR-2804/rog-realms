@@ -13,6 +13,12 @@ const customStyles = plugin(function ({ addUtilities }) {
       "border-image-repeat": "repeat",
       "will-change": "filter",
     },
+    ".realm-card-bg": {
+      "background-color": "rgba(0, 0, 0, 0.45)",
+      margin: "0",
+      padding: "var(--size-250) var(--resize-300)",
+      "backdrop-filter": "blur(6px)",
+    },
     ".realm-card-divider": {
       "background-size": "auto 60px",
       "background-position": "bottom center, 0",

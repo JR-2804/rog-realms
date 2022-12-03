@@ -5,16 +5,22 @@ export interface Props {
   image: string;
   title: string;
   serverInfo: ServerInfo;
+  link: string;
 }
 
-const { image, title, serverInfo } = Astro.props;
+const { image, title, serverInfo, link } = Astro.props;
 ---
 
-<div class="relative grid grid-rows-2 min-h-[300px] p-2">
+<a
+  href={link}
+  target="_blank"
+  class="relative grid grid-rows-2 min-h-[300px] p-2"
+>
   <div
     class="absolute top-0 z-10 left-0 right-0 bottom-0 border-[90px] border-black brightness-1 drop-shadow-[0px_3px_10px_rgba(0,0,0,0.7)] hover:filter-none duration-300 cursor-pointer realm-border"
   >
   </div>
+  <div class="realm-card-bg absolute top-2 left-2 right-2 bottom-2"></div>
   <div class="relative bg-cover" style={`background-image: url('${image}');`}>
     <div
       class="absolute left-2 right-2 bottom-[-30px] bg-cover bg-[url('https://res.cloudinary.com/jr-cloud/image/upload/v1670023141/rog-realms/rc-filigree-no-gem_y2zdwr.png')] h-[60px] realm-card-divider"
@@ -22,21 +28,39 @@ const { image, title, serverInfo } = Astro.props;
     </div>
   </div>
   <div
-    class="grid p-4 content-start gap-1 font-sans font-semibold blizzard-shadow"
+    class="grid px-6 py-4 content-start gap-1 font-sans font-semibold blizzard-shadow"
   >
     <h3 class="text-center text-xl text-white">
       {title}
     </h3>
-    <ul class="text-base text-white opacity-70">
+    <ul class="text-lg text-white opacity-70">
       <li>
-        Estado: {serverInfo.status}
+        <span>Estado:</span>
+        <span
+          class={`
+            ${
+              serverInfo.status === "Online" ? "text-green-500" : "text-red-500"
+            }
+          `}
+        >
+          {serverInfo.status}</span
+        >
       </li>
       <li>
-        Número de jugadores: {serverInfo.numberOfPlayers}
+        <span>Número de jugadores:</span>
+        <span>{serverInfo.numberOfPlayers}</span>
       </li>
       <li>
-        Latencia interna: {serverInfo.internalLag}
+        <span>Latencia interna:</span>
+        <span
+          class={`
+            ${serverInfo.internalLag < 50 && "text-green-500"}
+            ${serverInfo.internalLag < 100 ? "text-yellow-500" : "text-red-500"}
+          `}
+        >
+          {serverInfo.internalLag}</span
+        >
       </li>
     </ul>
   </div>
-</div>
+</a>

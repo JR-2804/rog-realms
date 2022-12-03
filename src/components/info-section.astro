@@ -4,8 +4,8 @@ import RealmCard from "../components/realm-card.astro";
 import "@fontsource/metamorphous";
 import { getServerInfo } from "../services/server";
 
-const lk = getServerInfo("LK");
-const panda = getServerInfo("MoP");
+const lk = await getServerInfo("LK");
+const panda = await getServerInfo("MoP");
 ---
 
 <section
@@ -21,11 +21,13 @@ const panda = getServerInfo("MoP");
       image="https://res.cloudinary.com/jr-cloud/image/upload/v1670016598/rog-realms/lk-desktop_wggs4w.jpg"
       title="Wrath of the Lich King"
       serverInfo={lk}
+      link="https://rogwow.nat.cu/game.php?lk"
     />
     <RealmCard
       image="https://res.cloudinary.com/jr-cloud/image/upload/v1670016595/rog-realms/mop-desktop_m76rqi.jpg"
       title="Mists of Pandaria"
       serverInfo={panda}
+      link="https://rogwow.nat.cu/game.php?mop"
     />
   </div>
 </section>

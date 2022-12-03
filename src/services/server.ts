@@ -1,18 +1,18 @@
 import type { ServerInfo } from "../types/server-info";
 
-const getServerInfo = (server: "LK" | "MoP"): ServerInfo => {
-  if (server === "LK") {
-    return {
-      status: "Online",
-      numberOfPlayers: 123,
-      internalLag: 5,
-    };
-  }
+const getServerInfo = async (server: "LK" | "MoP"): Promise<ServerInfo> => {
+  const { realm_status, realm_characters, realm_diff } = await (
+    await fetch(
+      server === "LK"
+        ? "https://api.rogwow.com/realm/lk/status/"
+        : "https://api.rogwow.com/realm/mop/status/",
+    )
+  ).json();
 
   return {
-    status: "Online",
-    numberOfPlayers: 476,
-    internalLag: 20,
+    status: realm_status == "Online" ? "Online" : "Offline",
+    numberOfPlayers: realm_characters,
+    internalLag: realm_diff,
   };
 };
 
