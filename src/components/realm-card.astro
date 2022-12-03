@@ -1,4 +1,26 @@
-<div
-  class="grid bg-cover min-h-[300px] bg-[url(https://res.cloudinary.com/jr-cloud/image/upload/v1670023140/rog-realms/rc-media-frame-spritesheet_ewjco5.png)]"
->
+---
+export interface Props {
+  image: string;
+  title: string;
+}
+
+const { image, title } = Astro.props;
+---
+
+<div class="relative grid grid-rows-2 min-h-[300px] p-2">
+  <div
+    class="absolute top-0 z-10 left-0 right-0 bottom-0 border-[90px] border-black brightness-1 drop-shadow-[0px_3px_10px_rgba(0,0,0,0.7)] hover:filter-none duration-300 cursor-pointer"
+    style="border-image-source: url(https://res.cloudinary.com/jr-cloud/image/upload/v1670023140/rog-realms/rc-media-frame-spritesheet_ewjco5.png);border-image-slice: 120;border-image-repeat: repeat;will-change: filter;"
+  >
+  </div>
+  <div class={`relative bg-cover`} style={`background-image: url('${image}');`}>
+    <div
+      class="absolute left-2 right-2 bottom-[-30px] bg-cover bg-[url('https://res.cloudinary.com/jr-cloud/image/upload/v1670023141/rog-realms/rc-filigree-no-gem_y2zdwr.png')] h-[60px]"
+      style="background-size: auto 60px;background-position: bottom center, 0;"
+    >
+    </div>
+  </div>
+  <div class="bg-blue-400">
+    <h3>{title}</h3>
+  </div>
 </div>
