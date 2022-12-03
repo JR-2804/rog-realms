@@ -2,25 +2,30 @@
 import RealmCard from "../components/realm-card.astro";
 
 import "@fontsource/metamorphous";
+import { getServerInfo } from "../services/server";
+
+const lk = getServerInfo("LK");
+const panda = getServerInfo("MoP");
 ---
 
 <section
-  class="grid grid-rows-[auto_1fr] py-14 gap-14 bg-cover bg-[url('https://res.cloudinary.com/jr-cloud/image/upload/v1670016601/rog-realms/bg_stone_texture_mobile_a9isiy.jpg')]"
+  class="grid grid-rows-[auto_1fr] py-6 md:py-14 gap-4 md:gap-14 bg-cover bg-[url('https://res.cloudinary.com/jr-cloud/image/upload/v1670016601/rog-realms/bg_stone_texture_mobile_a9isiy.jpg')]"
 >
   <h1
-    class="grid text-center text-white font-metamorphous text-4xl sm:text-5xl md:text-6xl uppercase"
-    style="filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));text-shadow: 0px 1px 35px rgb(0 43 82 / 40%);"
+    class="grid text-center text-white font-metamorphous text-3xl sm:text-5xl md:text-6xl uppercase blizzard-shadow"
   >
     Reinos de RoG
   </h1>
-  <div class="grid grid-flow-row md:grid-cols-2 px-20 gap-8">
+  <div class="grid grid-flow-row md:grid-cols-2 px-4 md:px-12 gap-8">
     <RealmCard
-      title="Wrath of the Lich King"
       image="https://res.cloudinary.com/jr-cloud/image/upload/v1670016598/rog-realms/lk-desktop_wggs4w.jpg"
+      title="Wrath of the Lich King"
+      serverInfo={lk}
     />
     <RealmCard
-      title="Mists of Pandaria"
       image="https://res.cloudinary.com/jr-cloud/image/upload/v1670016595/rog-realms/mop-desktop_m76rqi.jpg"
+      title="Mists of Pandaria"
+      serverInfo={panda}
     />
   </div>
 </section>
