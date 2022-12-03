@@ -55,7 +55,12 @@ const { image, title, serverInfo, link } = Astro.props;
         <span
           class={`
             ${serverInfo.internalLag < 50 && "text-green-500"}
-            ${serverInfo.internalLag < 100 ? "text-yellow-500" : "text-red-500"}
+            ${
+              serverInfo.internalLag >= 50 &&
+              serverInfo.internalLag <= 100 &&
+              "text-yellow-500"
+            }
+            ${serverInfo.internalLag > 100 && "text-red-500"}
           `}
         >
           {serverInfo.internalLag}</span
